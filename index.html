@@ -1,31 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ezzy Harrison — A Community Story</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #1a1a1a;
+    color: #f5f0e8;
+    overflow-x: hidden;
+  }
+  
+  .section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 24px;
+    position: relative;
+    transition: background 0.8s ease;
+  }
+  
+  .section-dark { background: #1a1a1a; }
+  .section-darker { background: #111111; }
+  .section-accent { background: #0f0f0f; }
+  
+  .content {
+    max-width: 720px;
+    width: 100%;
+  }
+  
+  .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #c4a77d;
+    margin-bottom: 32px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+  }
+  
+  .title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    line-height: 1.2;
+    color: #f5f0e8;
+    margin-bottom: 24px;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #d4cfc7;
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease 0.2s;
+  }
+  
+  .bridging {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #d4cfc7;
+    margin-bottom: 32px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease 0.1s;
+  }
+  
+  .quote {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(20px, 3.5vw, 28px);
+    line-height: 1.6;
+    color: #f5f0e8;
+    font-style: italic;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+  }
+  
+  .quote::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: #c4a77d;
+    margin-bottom: 24px;
+  }
+  
+  .attribution {
+    font-size: 14px;
+    color: #888;
+    margin-top: 8px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.8s ease 0.3s;
+  }
+  
+  .spacer { height: 40px; }
+  
+  .footer-text {
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 60px;
+    opacity: 0;
+    transition: all 0.8s ease;
+  }
+  
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+  }
+  
+  .visible .label,
+  .visible .title,
+  .visible .subtitle,
+  .visible .bridging,
+  .visible .quote,
+  .visible .attribution,
+  .visible .footer-text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: #c4a77d;
+    width: 0%;
+    z-index: 100;
+    transition: width 0.1s;
+  }
+  
+  @media (max-width: 600px) {
+    .section { padding: 60px 20px; }
+    .quote { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
 
-Hampshire County Food Policy Council
-The Distance Between the Front Door and the Kitchen
-A community story featuring Ezzy Harrison
-Scroll
-Isolation
-When the pandemic forced everything remote, Ezzy was finishing her nutrition degree while living at home with her family.
-"To shift completely remote was, it was devastating… Even at home felt a little disconnected. It was definitely hard to really feel a community connection while we were on lockdown."
-— Ezzy Harrison
-Community
-On her 21st birthday, an unexpected celebration reminded her what community felt like again after lockdown.
-"I found out another participant shared the exact same birthday with me—same day, same year. We both love baking, so we brought cakes to celebrate together… It was like the first time after the pandemic that I had community."
-"What I saw from the produce prescription was that when people have access to these foods, they will use it… If they had the same access to fresh produce and Whole Foods, they would choose that."
-— Ezzy Harrison
-Food & Culture
-Ezzy's relationship with food runs deep. She was diagnosed with Crohn's Disease as a teenager, which led her to study nutrition. But food was never just clinical for her.
-"Food for me is way more than fuel. It's soul food. It's my culture. Just being able to make a dish that looks nice really will just boost my day and my mood."
-"It's always been a part of who I am. It's always been the center of every family function. And it's always been the thing that brings us together."
-— Ezzy Harrison
-Empowerment
-Through her work with the Produce Prescription program, Ezzy saw how broken systems keep people from the food they need.
-"The government structure… made it really hard for low income communities and people with disabilities to even access the bare minimum of care… What we often see is the community that is impacted, coming together and uplifting their own voices."
-— Ezzy Harrison
-Hope
-Looking ahead, Ezzy hopes the next generation learns what carried her through.
-"I would love for them to know that community and family are really going to be the ones to help you. I would love for them to know that their voices matter… and that they can, if they all come together, change these sort of systems that are in their way."
-"I would love to leave behind the fear of insecurity… and create something that we can learn from."
-— Ezzy Harrison
-Ezzy Harrison is a nutrition student at Holyoke Community College.
-Story recorded November 2023 · Hampshire County Food Policy Council
-Add Ezzy story page
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="section section-dark" id="sec1">
+  <div class="content">
+    <div class="label">Hampshire County Food Policy Council</div>
+    <div class="title">The Distance Between the Front Door and the Kitchen</div>
+    <div class="subtitle">A community story featuring Ezzy Harrison</div>
+    <div class="scroll-hint">Scroll</div>
+  </div>
+</div>
+
+<div class="section section-darker" id="sec2">
+  <div class="content">
+    <div class="label">Isolation</div>
+    <div class="bridging">When the pandemic forced everything remote, Ezzy was finishing her nutrition degree while living at home with her family.</div>
+    <div class="quote">"To shift completely remote was, it was devastating… Even at home felt a little disconnected. It was definitely hard to really feel a community connection while we were on lockdown."</div>
+    <div class="attribution">— Ezzy Harrison</div>
+  </div>
+</div>
+
+<div class="section section-dark" id="sec3">
+  <div class="content">
+    <div class="label">Community</div>
+    <div class="bridging">On her 21st birthday, an unexpected celebration reminded her what community felt like again after lockdown.</div>
+    <div class="quote">"I found out another participant shared the exact same birthday with me—same day, same year. We both love baking, so we brought cakes to celebrate together… It was like the first time after the pandemic that I had community."</div>
+    <div class="spacer"></div>
+    <div class="quote">"What I saw from the produce prescription was that when people have access to these foods, they will use it… If they had the same access to fresh produce and Whole Foods, they would choose that."</div>
+    <div class="attribution">— Ezzy Harrison</div>
+  </div>
+</div>
+
+<div class="section section-darker" id="sec4">
+  <div class="content">
+    <div class="label">Empowerment</div>
+    <div class="bridging">Through her work with the Produce Prescription program, Ezzy saw how broken systems keep people from the food they need.</div>
+    <div class="quote">"The government structure… made it really hard for low income communities and people with disabilities to even access the bare minimum of care… What we often see is the community that is impacted, coming together and uplifting their own voices."</div>
+    <div class="attribution">— Ezzy Harrison</div>
+  </div>
+</div>
+
+<div class="section section-dark" id="sec5">
+  <div class="content">
+    <div class="label">Hope</div>
+    <div class="bridging">Looking ahead, Ezzy hopes the next generation learns what carried her through.</div>
+    <div class="quote">"I would love for them to know that community and family are really going to be the ones to help you. I would love for them to know that their voices matter… and that they can, if they all come together, change these sort of systems that are in their way."</div>
+    <div class="spacer"></div>
+    <div class="quote">"I would love to leave behind the fear of insecurity… and create something that we can learn from."</div>
+    <div class="attribution">— Ezzy Harrison</div>
+  </div>
+</div>
+
+<div class="section section-accent" id="sec6">
+  <div class="content">
+    <div class="footer-text">
+      Ezzy Harrison is a nutrition student at Holyoke Community College.<br>
+      Story recorded November 2023 · Hampshire County Food Policy Council
+    </div>
+  </div>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.3 });
+  
+  sections.forEach(section => observer.observe(section));
+  
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progressBar').style.width = (scrollTop / scrollHeight * 100) + '%';
+  });
+</script>
+
+</body>
+</html>
