@@ -1,99 +1,93 @@
-<!DOCTYPE html>
+
+html_parts = []
+
+html_parts.append('''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ezzy Harrison — A Community Story</title>
+<title>The Distance Between the Front Door and the Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
-  
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  
   html { scroll-behavior: smooth; }
-  
   body {
     font-family: 'Inter', sans-serif;
     background: #1a1a1a;
     color: #f5f0e8;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
-  
-  .section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 80px 24px;
-    position: relative;
-    transition: background 0.8s ease;
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: #c4a77d;
+    width: 0%;
+    z-index: 100;
   }
-  
-  .section-dark { background: #1a1a1a; }
-  .section-darker { background: #111111; }
-  .section-accent { background: #0f0f0f; }
-  
-  .content {
-    max-width: 720px;
-    width: 100%;
+  .story {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 100px 32px 160px;
   }
-  
+  .reveal {
+    margin-bottom: 90px;
+    will-change: opacity, transform;
+  }
+  .chapter {
+    margin-top: 40px;
+  }
   .label {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 3px;
     color: #c4a77d;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     font-weight: 500;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
   }
-  
-  .title {
+  h1 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(32px, 6vw, 52px);
+    font-size: clamp(32px, 5vw, 48px);
     line-height: 1.2;
     color: #f5f0e8;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     font-weight: 400;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease;
   }
-  
   .subtitle {
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 17px;
     color: #d4cfc7;
-    margin-bottom: 48px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease 0.2s;
+    line-height: 1.5;
   }
-  
-  .bridging {
+  .section-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(24px, 3.5vw, 32px);
+    color: #f5f0e8;
+    line-height: 1.3;
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+  .section-title::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: #c4a77d;
+    margin-bottom: 24px;
+  }
+  .body-text {
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.75;
     color: #d4cfc7;
-    margin-bottom: 32px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease 0.1s;
   }
-  
   .quote {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(20px, 3.5vw, 28px);
-    line-height: 1.6;
+    font-size: clamp(19px, 3vw, 24px);
+    line-height: 1.65;
     color: #f5f0e8;
     font-style: italic;
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease;
   }
-  
   .quote::before {
     content: "";
     display: block;
@@ -102,72 +96,25 @@
     background: #c4a77d;
     margin-bottom: 24px;
   }
-  
   .attribution {
-    font-size: 14px;
+    font-size: 13px;
     color: #888;
-    margin-top: 8px;
-    opacity: 0;
-    transform: translateY(15px);
-    transition: all 0.8s ease 0.3s;
+    margin-top: 16px;
   }
-  
-  .spacer { height: 40px; }
-  
   .footer-text {
     font-size: 12px;
     color: #666;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-align: center;
+    line-height: 1.8;
     margin-top: 60px;
-    opacity: 0;
-    transition: all 0.8s ease;
   }
-  
-  .scroll-hint {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 12px;
-    color: #666;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    animation: bounce 2s infinite;
-  }
-  
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-10px); }
-    60% { transform: translateX(-50%) translateY(-5px); }
-  }
-  
-  .visible .label,
-  .visible .title,
-  .visible .subtitle,
-  .visible .bridging,
-  .visible .quote,
-  .visible .attribution,
-  .visible .footer-text {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: #c4a77d;
-    width: 0%;
-    z-index: 100;
-    transition: width 0.1s;
-  }
-  
   @media (max-width: 600px) {
-    .section { padding: 60px 20px; }
-    .quote { font-size: 20px; }
+    .story { padding: 80px 24px 120px; }
+    .reveal { margin-bottom: 70px; }
+    .body-text { font-size: 15px; }
+    .quote { font-size: 19px; }
   }
 </style>
 </head>
@@ -175,80 +122,312 @@
 
 <div class="progress-bar" id="progressBar"></div>
 
-<div class="section section-dark" id="sec1">
-  <div class="content">
-    <div class="label">Hampshire County Food Policy Council</div>
-    <div class="title">The Distance Between the Front Door and the Kitchen</div>
-    <div class="subtitle">A community story featuring Ezzy Harrison</div>
-    <div class="scroll-hint">Scroll</div>
-  </div>
-</div>
+<main class="story">
+''')
 
-<div class="section section-darker" id="sec2">
-  <div class="content">
-    <div class="label">Isolation</div>
-    <div class="bridging">When the pandemic forced everything remote, Ezzy was finishing her nutrition degree while living at home with her family.</div>
-    <div class="quote">"To shift completely remote was, it was devastating… Even at home felt a little disconnected. It was definitely hard to really feel a community connection while we were on lockdown."</div>
-    <div class="attribution">— Ezzy Harrison</div>
+# Title block
+html_parts.append('''  <div class="reveal">
+    <p class="label">Hampshire County Food Policy Council</p>
+    <h1>The Distance Between the Front Door and the Kitchen</h1>
+    <p class="subtitle">A community story featuring Ezzy Harrison</p>
   </div>
-</div>
+''')
 
-<div class="section section-dark" id="sec3">
-  <div class="content">
-    <div class="label">Community</div>
-    <div class="bridging">On her 21st birthday, an unexpected celebration reminded her what community felt like again after lockdown.</div>
-    <div class="quote">"I found out another participant shared the exact same birthday with me—same day, same year. We both love baking, so we brought cakes to celebrate together… It was like the first time after the pandemic that I had community."</div>
-    <div class="spacer"></div>
-    <div class="quote">"What I saw from the produce prescription was that when people have access to these foods, they will use it… If they had the same access to fresh produce and Whole Foods, they would choose that."</div>
-    <div class="attribution">— Ezzy Harrison</div>
+# Opening
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">Ezzy Harrison was 21 years old, finishing her nutrition degree at Holyoke Community College, when the world shut down. She was living at home in Northampton with her mother and two brothers — one of them about to graduate high school. But even at home, Ezzy felt far away.</p>
   </div>
-</div>
+''')
 
-<div class="section section-darker" id="sec4">
-  <div class="content">
-    <div class="label">Empowerment</div>
-    <div class="bridging">Through her work with the Produce Prescription program, Ezzy saw how broken systems keep people from the food they need.</div>
-    <div class="quote">"The government structure… made it really hard for low income communities and people with disabilities to even access the bare minimum of care… What we often see is the community that is impacted, coming together and uplifting their own voices."</div>
-    <div class="attribution">— Ezzy Harrison</div>
+# Quote 1
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"To shift completely remote was, it was devastating… Even at home felt a little disconnected… It was definitely hard to really feel a community connection while we were on lockdown."</p>
+    <p class="attribution">— Ezzy Harrison</p>
   </div>
-</div>
+''')
 
-<div class="section section-dark" id="sec5">
-  <div class="content">
-    <div class="label">Hope</div>
-    <div class="bridging">Looking ahead, Ezzy hopes the next generation learns what carried her through.</div>
-    <div class="quote">"I would love for them to know that community and family are really going to be the ones to help you. I would love for them to know that their voices matter… and that they can, if they all come together, change these sort of systems that are in their way."</div>
-    <div class="spacer"></div>
-    <div class="quote">"I would love to leave behind the fear of insecurity… and create something that we can learn from."</div>
-    <div class="attribution">— Ezzy Harrison</div>
+# Protocol
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">Ezzy is immunocompromised. Her mother was an essential worker, out of the house for long stretches. The family developed a protocol: if anyone came through the front door, Ezzy had to be somewhere else. There was a sanitation station. Everyone got cleaned up before they got close to her.</p>
   </div>
-</div>
+''')
 
-<div class="section section-accent" id="sec6">
-  <div class="content">
-    <div class="footer-text">
-      Ezzy Harrison is a nutrition student at Holyoke Community College.<br>
-      Story recorded November 2023 · Hampshire County Food Policy Council
-    </div>
+# Quote 2
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"It was really tough and endearing to see. On one hand, I felt really bad that everyone was so cautious. But on the other, we were just this team and a force to be reckoned with. We weren't gonna let it bring us down."</p>
+    <p class="attribution">— Ezzy Harrison</p>
   </div>
-</div>
+''')
+
+# Strawberry jam
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">During lockdown, Ezzy and her family shared video tutorials of preserving strawberries online for her mother's clients and their community, a way to preserve strawberries and preserve some lightness in a heavy year.</p>
+  </div>
+''')
+
+# Quote 3
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"We all did it in real time. And we made a bunch of little jars that we were able to package up and ship out to people."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Section: Birthday
+html_parts.append('''  <div class="reveal chapter">
+    <h2 class="section-title">The Birthday That Felt Like Coming Home</h2>
+  </div>
+''')
+
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">The first time Ezzy felt community again after lockdown was on her 21st birthday. She was at Community Action's Gen Q program when she discovered something remarkably surprising: one of the other participants shared her exact birthday. Same day, same year, and they even share the same interest for baking.</p>
+  </div>
+''')
+
+# Quote 4
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"We were like, we're both gonna get a cake and bring it in on the same day and just celebrate… They had a family friend who made this really cool tiered cake, and I made a gluten and dairy free tres leches cake. Everyone was just sharing the cakes and like cutting up pieces on the same plate… And we all just sat together and talked. It was like the first time after the pandemic that I had community."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Realization (with tweak applied)
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">That pure moment — two strangers discovering they were birthday twins over shared cake — became a turning point. It also made Ezzy realize how reviving community could be: It’s sitting at a table with people who happened to love the same thing she did; It’s being brought back to life after so much isolation; It’s facing the emptiness the pandemic left behind yet choosing to connect anyway.</p>
+  </div>
+''')
+
+# Section: Food
+html_parts.append('''  <div class="reveal chapter">
+    <h2 class="section-title">Food as Medicine, Food as Culture</h2>
+  </div>
+''')
+
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">Ezzy's relationship with food runs deep. She was diagnosed with Crohn's Disease as a teenager, which led her to study nutrition. But food was never just clinical for her.</p>
+  </div>
+''')
+
+# Quote 5
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"Food for me is way more than fuel. It's soul food. It's my culture. Just being able to make a dish that looks nice really will just boost my day and my mood."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Favorite foods
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">Her favorite food shifts with her feelings. Sad days call for soups and stews, while happy days are sushi days. But when she's proud and celebrating, there's only one choice: her family's authentic Puerto Rican food.</p>
+  </div>
+''')
+
+# Quote 6
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"It's always been a part of who I am. It's always been the center of every family function. And it's always been the thing that brings us together."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Grocery
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">During the pandemic, that togetherness was harder to share. Because Ezzy couldn't go to the grocery store herself, her mother went instead, navigating crowded aisles and strict time windows.</p>
+  </div>
+''')
+
+# Quote 7
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"There was a lot of structure in the grocery stores as well as having to show up at a certain time. And sometimes we were a little too late, or like the timing was off, and maybe the grocery store was a little too crowded… [Then] we weren't able to get that grocery at that time."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Pantry
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">And when they relied on food pantries, Ezzy couldn't pick her own food. Because of strict health limitations, she can't eat gluten or dairy.</p>
+  </div>
+''')
+
+# Quote 8
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"Being able to pick out things that were gluten free was really difficult during a pandemic and there wasn't much access to that."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Section: Produce Prescription
+html_parts.append('''  <div class="reveal chapter">
+    <h2 class="section-title">What She Saw at the Produce Prescription Program</h2>
+  </div>
+''')
+
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">Ezzy experienced these barriers in her own kitchen before she ever saw them at the Produce Prescription program. Interning with Healthy Hampshire's Produce Prescription program, which gives fresh produce to people who need it, she realized something worth noting about food accessibility.</p>
+  </div>
+''')
+
+# Quote 9
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"What I saw from the produce prescription, actually, was that when people have access to these foods, they will use it. They will get the fresh produce if they can… I think if they had the same access to fresh produce and Whole Foods, that they would choose that over something that most likely won't make them feel good if they have a lot of it."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Government bridging
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">But access isn't just about what's on the shelf. It's about the systems that decide who gets to shop, when, and how.</p>
+  </div>
+''')
+
+# Quote 10
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"The government structure that they had created, I think, made it really hard for low income communities and people with disabilities to even access the bare minimum of care. And if I had a magic wand, I would waive it so that those structures would actually be helpful."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Community voices bridging
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">Ezzy also saw something else: communities refusing to wait for systems to save them.</p>
+  </div>
+''')
+
+# Quote 11
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"What we often see is the community that is impacted, coming together and uplifting their own voices. And that's something that really needs to be done around nutrition and health."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Section: Growing Forward
+html_parts.append('''  <div class="reveal chapter">
+    <h2 class="section-title">"Growing" Forward</h2>
+  </div>
+''')
+
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">During the pandemic, Ezzy's family started growing their own food. She learned to grow parsley from home, which she deemed "a huge step" because she hadn't grown her own food before. She also worked at the Grow Foods Giving Garden in Florence, harvesting food, packing it into baskets, sending it out.</p>
+  </div>
+''')
+
+# Quote 12
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"It felt amazing. It was centering, it was grounding. It was just… I don't even know if I could find the right word for the feeling."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Self-sufficiency bridging
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">But self-sufficiency, she realized, isn't the whole answer.</p>
+  </div>
+''')
+
+# Quote 13
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"I feel it's a double-edged sword in a way because I think if people in your community need help, then you know we're all supposed to come together. I'd much rather that than being super sufficient by yourself. Which is why I want to be able to grow food and share it with other people."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Section: Looking Ahead
+html_parts.append('''  <div class="reveal chapter">
+    <h2 class="section-title">Looking ahead — what Ezzy Wants the Future to Know</h2>
+  </div>
+''')
+
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">Ezzy is 23 now. The pandemic isn't over for her; physically, maybe, but not internally. She still sees the split in how people move through the world: some acknowledging that others are more at risk, others just wanting to get back to normal.</p>
+  </div>
+''')
+
+# Quote 14
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"I would love to leave behind the fear of insecurity and the anxiety of contaminating other people or getting contaminated… I'd love to just leave behind or create something that we can learn from."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Healing bridging
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">She also developed a unique take on viewing the pandemic and isolation.</p>
+  </div>
+''')
+
+# Quote 15
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"I think confirmation, like saying it did happen. And you're not crazy for feeling the way that you're feeling or the way it impacted you, and that we're not going to move past it. We're going to take our time and heal."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Message bridging
+html_parts.append('''  <div class="reveal">
+    <p class="body-text">And she has a message for whoever comes next.</p>
+  </div>
+''')
+
+# Quote 16
+html_parts.append('''  <div class="reveal">
+    <p class="quote">"I would love for them to know that community and family are really going to be the ones to help you. I would love for them to know that their voices matter when things aren't just, and that they can, if they all come together, change these sort of systems that are in their way."</p>
+    <p class="attribution">— Ezzy Harrison</p>
+  </div>
+''')
+
+# Footer
+html_parts.append('''  <div class="reveal">
+    <p class="footer-text">Ezzy Harrison is a nutrition student at Holyoke Community College and a former intern with Healthy Hampshire's Produce Prescription program.<br>This story was recorded in November 2023 as part of the Hampshire County Food Policy Council's community storytelling archive.</p>
+  </div>
+''')
+
+html_parts.append('''</main>
 
 <script>
-  const sections = document.querySelectorAll('.section');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+(function() {
+  const reveals = document.querySelectorAll('.reveal');
+  const progressBar = document.getElementById('progressBar');
+  let ticking = false;
+
+  function update() {
+    const viewportH = window.innerHeight;
+    const viewportCenter = viewportH / 2;
+    const fadeRange = viewportH * 0.55;
+
+    reveals.forEach(function(el) {
+      const rect = el.getBoundingClientRect();
+      const elCenter = rect.top + rect.height / 2;
+      const dist = Math.abs(elCenter - viewportCenter);
+      let progress = 1 - (dist / fadeRange);
+      progress = Math.max(0, Math.min(1, progress));
+      // Smoothstep for buttery easing
+      progress = progress * progress * (3 - 2 * progress);
+      el.style.opacity = 0.05 + (progress * 0.95);
+      el.style.transform = 'translateY(' + ((1 - progress) * 50) + 'px)';
     });
-  }, { threshold: 0.3 });
-  
-  sections.forEach(section => observer.observe(section));
-  
-  window.addEventListener('scroll', () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    document.getElementById('progressBar').style.width = (scrollTop / scrollHeight * 100) + '%';
-  });
+
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - viewportH;
+    progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll);
+  update();
+})();
 </script>
 
 </body>
-</html>
+</html>''')
+
+full_html = ''.join(html_parts)
+
+with open('/mnt/agents/output/ezzy_story_final.html', 'w', encoding='utf-8') as f:
+    f.write(full_html)
+
+print("Saved: /mnt/agents/output/ezzy_story_final.html")
+print(f"File size: {len(full_html)} characters")
