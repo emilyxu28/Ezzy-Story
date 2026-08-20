@@ -33,8 +33,7 @@
     margin-bottom: 90px;
     will-change: opacity, transform;
   }
-  /* Extra air so chapter titles read as hard breaks */
-  .chapter { margin-top: 100px; }
+  .chapter { margin-top: 160px; margin-bottom: 48px; }
   .label {
     font-size: 11px;
     text-transform: uppercase;
@@ -56,22 +55,30 @@
     color: #d4cfc7;
     line-height: 1.5;
   }
+  .chapter-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: #c4a77d;
+    margin-bottom: 14px;
+  }
   .section-title {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(24px, 3.5vw, 32px);
+    font-size: clamp(28px, 4.2vw, 38px);
     color: #f5f0e8;
-    line-height: 1.3;
-    margin-bottom: 36px;
+    line-height: 1.25;
+    margin-bottom: 0;
     font-weight: 400;
   }
-  /* Gold rule reserved for chapter boundaries only */
+  /* Option A: horizontal gold bar between number and title */
   .section-title::before {
     content: "";
     display: block;
     width: 64px;
     height: 2px;
     background: #c4a77d;
-    margin-bottom: 28px;
+    margin-bottom: 22px;
   }
   .body-text {
     font-size: 16px;
@@ -105,6 +112,7 @@
   @media (max-width: 600px) {
     .story { padding: 80px 24px 120px; }
     .reveal { margin-bottom: 70px; }
+    .chapter { margin-top: 120px; }
     .body-text { font-size: 15px; }
     .quote { font-size: 19px; }
   }
@@ -150,6 +158,7 @@
   </div>
 
   <div class="reveal chapter">
+    <p class="chapter-label">01</p>
     <h2 class="section-title">The Birthday That Felt Like Coming Home</h2>
   </div>
 
@@ -167,6 +176,7 @@
   </div>
 
   <div class="reveal chapter">
+    <p class="chapter-label">02</p>
     <h2 class="section-title">Food as Medicine, Food as Culture</h2>
   </div>
 
@@ -207,6 +217,7 @@
   </div>
 
   <div class="reveal chapter">
+    <p class="chapter-label">03</p>
     <h2 class="section-title">What She Saw at the Produce Prescription Program</h2>
   </div>
 
@@ -238,6 +249,7 @@
   </div>
 
   <div class="reveal chapter">
+    <p class="chapter-label">04</p>
     <h2 class="section-title">&ldquo;Growing&rdquo; Forward</h2>
   </div>
 
@@ -260,6 +272,7 @@
   </div>
 
   <div class="reveal chapter">
+    <p class="chapter-label">05</p>
     <h2 class="section-title">Looking ahead &mdash; what Ezzy Wants the Future to Know</h2>
   </div>
 
