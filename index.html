@@ -1,5 +1,4 @@
-
-html = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -34,9 +33,7 @@ html = '''<!DOCTYPE html>
     margin-bottom: 90px;
     will-change: opacity, transform;
   }
-  .chapter {
-    margin-top: 40px;
-  }
+  .chapter { margin-top: 40px; }
   .label {
     font-size: 11px;
     text-transform: uppercase;
@@ -115,6 +112,7 @@ html = '''<!DOCTYPE html>
     .quote { font-size: 19px; }
   }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -129,7 +127,7 @@ html = '''<!DOCTYPE html>
   </div>
 
   <div class="reveal">
-    <p class="body-text">Ezzy Harrison was 21 years old, finishing her nutrition degree at Holyoke Community College, when the world shut down. She was living at home in Northampton with her mother and two brothers — one of them about to graduate high school. But even at home, Ezzy felt far away.</p>
+    <p class="body-text">Ezzy Harrison was 21 years old, finishing her nutrition degree at Holyoke Community College, when the world shut down. She was living at home in Northampton with her mother and two brothers &mdash; one of them about to graduate high school. But even at home, Ezzy felt far away.</p>
   </div>
 
   <div class="reveal">
@@ -343,10 +341,4 @@ html = '''<!DOCTYPE html>
 </script>
 
 </body>
-</html>'''
-
-with open('/mnt/agents/output/ezzy_story_final.html', 'w', encoding='utf-8') as f:
-    f.write(html)
-
-print("Saved: /mnt/agents/output/ezzy_story_final.html")
-print(f"File size: {len(html)} characters")
+</html>
